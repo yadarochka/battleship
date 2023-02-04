@@ -1,8 +1,10 @@
 import { getRandomInt } from "../utils/getRandomInt";
 import { isOutsideOfArray } from "../utils/isOutsideOfArray";
 import { Cell, CellStatus } from "./Cell";
+import { Player } from "./Player";
 
 export class Field {
+  player;
   cells: Cell[][] = [];
   ships = [
     { shipCount: 1, size: 4 },
@@ -11,17 +13,21 @@ export class Field {
     { shipCount: 4, size: 1 },
   ];
 
-  initialCells() {
+  constructor(player: Player) {
+    this.player = player;
+  }
+
+  public initialCells() {
     for (let x = 0; x < 10; x++) {
       const row = [];
       for (let y = 0; y < 10; y++) {
-        row.push(new Cell(y, x));
+        row.push(new Cell(y, x, this.player));
       }
       this.cells.push(row);
     }
   }
 
-  setupShips() {
+  public setupShips() {
     const ships = JSON.parse(JSON.stringify(this.ships));
 
     for (let ship of ships) {
@@ -33,7 +39,6 @@ export class Field {
       while (shipCount > 0) {
         let kx = getRandomInt(0, 9);
         let ky = getRandomInt(0, 9);
-        console.log("точка", ky, kx);
         if (this.isHorizontalPlaceFree(ky, kx, size)) {
           for (let i = 0; i < size; i++) {
             this.cells[ky][kx + i].setStatus(CellStatus.ALIVE);
@@ -52,8 +57,7 @@ export class Field {
     }
   }
 
-  isCellFree(y: number, x: number) {
-    console.log("смотрим точку", y, x);
+  private isCellFree(y: number, x: number) {
     if (this.cells[y][x].status !== CellStatus.EMPTY) {
       return false;
     }
@@ -72,7 +76,7 @@ export class Field {
     return true;
   }
 
-  isHorizontalPlaceFree(y: number, x: number, size: number) {
+  private isHorizontalPlaceFree(y: number, x: number, size: number) {
     if (length === 1) {
       return this.isCellFree(y, x);
     }
@@ -92,7 +96,7 @@ export class Field {
     return true;
   }
 
-  isVerticalPlaceFree(y: number, x: number, size: number) {
+  private isVerticalPlaceFree(y: number, x: number, size: number) {
     if (length === 1) {
       return this.isCellFree(y, x);
     }
@@ -112,5 +116,9 @@ export class Field {
     return true;
   }
 
-  isOusideOfField = isOutsideOfArray(10);
+  public getCopy(): Field {
+    const newBoard = new Field(this.player);
+    newBoard.cells = this.cells;
+    return newBoard;
+  }
 }
