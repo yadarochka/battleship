@@ -4,3 +4,41 @@
   padding: 2rem;
   text-align: center;
 }
+
+.app{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+
+}
+
+.field{
+  width: calc(51px * 10);
+  height: calc(51px * 10);
+  display: flex;
+  flex-wrap: wrap;
+
+  margin-top: -1px;
+  margin-left: -1px;
+}
+
+.cell{
+  outline: 1px solid black;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(168, 230, 255);
+
+  margin-top: 1px;
+  margin-left: 1px;
+}
+
+.dead{
+  background-color: red;
+}
+
+.alive{
+  background-color: rgb(70, 228, 30);
+}
