@@ -5,17 +5,18 @@ import classnames from "classnames";
 interface CellProps {
   isEnemy: boolean;
   cell: Cell;
-  onClick: () => void;
+  onClick: (cell: Cell) => void;
+  status: CellStatus;
 }
 
-const CellComponent: FC<CellProps> = ({ cell, onClick, isEnemy }) => {
+const CellComponent: FC<CellProps> = ({ cell, onClick, isEnemy, status }) => {
   return (
     <div
-      onClick={onClick}
+      onClick={() => onClick(cell)}
       className={classnames("cell", {
-        dead: cell.status === CellStatus.DEAD,
-        alive: cell.status === CellStatus.ALIVE && !isEnemy,
-        free: cell.status === CellStatus.FREE,
+        dead: status === CellStatus.DEAD,
+        alive: status === CellStatus.ALIVE && !isEnemy,
+        free: status === CellStatus.FREE,
       })}
     ></div>
   );

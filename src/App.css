@@ -8,6 +8,11 @@
 .column{
   display: flex;
   flex-direction: column;
+  flex: 0 0 auto;
+}
+
+.game-info{
+  width: 200px;
 }
 
 .field{
@@ -27,16 +32,43 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(168, 230, 255);
+  background-color:cornflowerblue;
+  cursor: pointer;
 
   margin-top: 1px;
   margin-left: 1px;
 }
 
 .dead{
-  background-color: red;
+  background-color: rgb(75, 75, 75);
+}
+.dead:before, .dead:after {
+  content: ""; position: absolute; width: 24px; height: 4px; background: rgb(209, 89, 109);
+}
+.dead:before {
+  transform: rotate(45deg);
+}
+.dead:after {
+  transform: rotate(-45deg);}
+
+  
+.alive{
+  background-color: rgb(75, 75, 75);
 }
 
-.alive{
-  background-color: rgb(70, 228, 30);
+.free{
+  display: flex;
+}
+.free::before{
+  content: '';
+  margin: auto;
+  width: 10px;
+  height: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: black;
+}
+
+.disabled-field {
+  opacity: 0.4;
 }
