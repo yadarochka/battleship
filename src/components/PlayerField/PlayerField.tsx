@@ -28,8 +28,6 @@ const PlayerField: FC<PlayerField> = ({
   const isTablet = useIsTablet();
   const isMobile = useIsMobile();
 
-  console.log(isMobile, isTablet);
-
   if (isMobile) {
     return (
       <div className={styles.column}>
