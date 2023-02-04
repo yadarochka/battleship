@@ -4,16 +4,17 @@ import CellComponent from "../CellComponent/CellComponent";
 
 interface FieldProps {
   field: Field;
-  setField: (board: Field) => void;
+  isEnemy?: boolean;
 }
 
-const FieldComponent: FC<FieldProps> = ({ field, setField }) => {
+const FieldComponent: FC<FieldProps> = ({ field, isEnemy = false }) => {
   return (
     <div className="field">
       {field.cells.map((row, index) => (
         <React.Fragment key={index}>
           {row.map((cell, index) => (
             <CellComponent
+              isEnemy={isEnemy}
               cell={cell}
               key={index}
               onClick={() => field.isCellFree(cell.y, cell.x)}
