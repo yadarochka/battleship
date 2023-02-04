@@ -9,6 +9,10 @@
   justify-content: space-around;
 }
 
+.name {
+  align-self: center;
+}
+
 .disabled {
   cursor: default;
   opacity: 0.4;

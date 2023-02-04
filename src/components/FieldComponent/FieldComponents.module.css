@@ -1,7 +1,7 @@
 .field {
   display: flex;
-  width: calc(41px * 10);
-  height: calc(41px * 10);
+  width: calc(41px * 11);
+  height: calc(41px * 11);
   flex-wrap: wrap;
   margin-top: -1px;
   margin-left: -1px;
@@ -13,9 +13,23 @@
   opacity: 0.4;
 }
 
+.header {
+  display: flex;
+  width: 41px;
+  height: 41px;
+  align-items: center;
+  justify-content: center;
+}
+
 @media (max-width: 750px) {
   .field {
-    width: calc(31px * 10);
-    height: calc(31px * 10);
+    width: calc(31px * 11);
+    height: calc(31px * 11);
+  }
+
+  .header {
+    display: flex;
+    width: 31px;
+    height: 31px;
   }
 }

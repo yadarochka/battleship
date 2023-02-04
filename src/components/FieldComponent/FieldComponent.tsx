@@ -48,10 +48,19 @@ const FieldComponent: FC<FieldProps & React.HTMLAttributes<HTMLDivElement>> = ({
     }
   };
 
+  const letters = ["А", "Б", "В", "Г", "Д", "Е", "Ж", "З", "И", "К"];
+
   return (
     <div className={classNames(styles.field, props.className)}>
+      <div className={styles.header}></div>
+      {letters.map((header) => (
+        <div key={header} className={styles.header}>
+          {header}
+        </div>
+      ))}
       {field.cells.map((row, index) => (
         <React.Fragment key={index}>
+          <div className={styles.header}>{index + 1}</div>
           {row.map((cell, index) => (
             <CellComponent
               isEnemy={isEnemy}

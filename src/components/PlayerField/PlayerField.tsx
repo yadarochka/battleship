@@ -31,7 +31,7 @@ const PlayerField: FC<PlayerField> = ({
   if (isMobile) {
     return (
       <div className={styles.column}>
-        <div>Поле игрока {player.name}</div>
+        <div className={styles.name}>Поле игрока {player.name}</div>
         <FieldComponent
           className={classNames({
             [styles.disabled]: currentPlayer === player,
@@ -51,7 +51,7 @@ const PlayerField: FC<PlayerField> = ({
     return (
       <div className={styles.row}>
         <div className={styles.column}>
-          <div>Поле игрока {player.name}</div>
+          <div className={styles.name}>Поле игрока {player.name}</div>
           <FieldComponent
             className={classNames({
               [styles.disabled]: currentPlayer === player,
@@ -72,7 +72,7 @@ const PlayerField: FC<PlayerField> = ({
 
   return (
     <div className={styles.column}>
-      <div>Поле игрока {player.name}</div>
+      <div className={styles.name}>Поле игрока {player.name}</div>
       <FieldComponent
         className={classNames({
           [styles.disabled]: currentPlayer === player,
