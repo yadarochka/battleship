@@ -58,7 +58,7 @@ const FieldComponent: FC<FieldProps & React.HTMLAttributes<HTMLDivElement>> = ({
               status={cell.status}
               cell={cell}
               key={index}
-              onClick={handlerAttackButton}
+              onClick={isEnemy ? handlerAttackButton : () => {}}
             />
           ))}
         </React.Fragment>
