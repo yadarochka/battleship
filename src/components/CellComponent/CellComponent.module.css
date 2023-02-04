@@ -1,0 +1,53 @@
+.cell {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+  margin-left: 1px;
+  background-color: cornflowerblue;
+  cursor: inherit;
+  outline: 1px solid black;
+}
+
+.dead {
+  background-color: rgb(75 75 75);
+  cursor: auto;
+}
+
+.dead::before,
+.dead::after {
+  position: absolute;
+  width: 24px;
+  height: 4px;
+  background: rgb(209 89 109);
+  content: "";
+}
+
+.dead::before {
+  transform: rotate(45deg);
+}
+
+.dead::after {
+  transform: rotate(-45deg);
+}
+
+.alive {
+  background-color: rgb(75 75 75);
+}
+
+.free {
+  display: flex;
+  cursor: auto;
+}
+
+.free::before {
+  width: 10px;
+  height: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: auto;
+  background-color: black;
+  content: "";
+}

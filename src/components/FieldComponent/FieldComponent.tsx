@@ -1,8 +1,10 @@
+import classNames from "classnames";
 import React, { FC } from "react";
 import { Cell } from "../../model/Cell";
 import { Field } from "../../model/Field";
 import { Player } from "../../model/Player";
 import CellComponent from "../CellComponent/CellComponent";
+import styles from "./FieldComponents.module.css";
 
 interface FieldProps {
   field: Field;
@@ -47,7 +49,7 @@ const FieldComponent: FC<FieldProps & React.HTMLAttributes<HTMLDivElement>> = ({
   };
 
   return (
-    <div className={props.className}>
+    <div className={classNames(styles.field, props.className)}>
       {field.cells.map((row, index) => (
         <React.Fragment key={index}>
           {row.map((cell, index) => (

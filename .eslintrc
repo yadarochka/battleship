@@ -1,0 +1,27 @@
+{
+  "extends": ["prettier"],
+  "plugins": ["react", "prettier"],
+  "parserOptions": {
+    "parser": "@babel/eslint-parser",
+    "requireConfigFile": false
+  },
+  "settings": {
+    "version": "detect"
+  },
+  "rules": {
+    "no-console": "error",
+    "react/self-closing-comp": [
+      "error",
+      {
+        "component": true,
+        "html": true
+      }
+    ],
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
+  }
+}

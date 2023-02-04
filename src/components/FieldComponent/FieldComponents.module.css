@@ -1,0 +1,14 @@
+.field {
+  display: flex;
+  width: calc(41px * 10);
+  height: calc(41px * 10);
+  flex-wrap: wrap;
+  margin-top: -1px;
+  margin-left: -1px;
+  cursor: pointer;
+}
+
+.disabled-field {
+  cursor: auto;
+  opacity: 0.4;
+}

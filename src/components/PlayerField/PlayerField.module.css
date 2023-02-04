@@ -1,0 +1,13 @@
+.playerField {
+  display: flex;
+  flex-direction: column;
+}
+
+.disabled {
+  cursor: default;
+  opacity: 0.4;
+}
+
+.cursor {
+  cursor: not-allowed;
+}

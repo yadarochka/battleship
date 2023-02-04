@@ -1,0 +1,38 @@
+.info {
+  display: flex;
+  min-width: 400px;
+  max-width: 600px;
+  height: 434px;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.moves {
+  font-weight: 700;
+  text-align: center;
+}
+
+.buttons {
+  display: flex;
+  align-self: center;
+  margin-top: auto;
+  gap: 20px;
+}
+
+button {
+  min-width: 100px;
+  max-width: 250px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: rgb(212 223 245);
+  transition: background-color linear 0.25s;
+}
+
+button:hover {
+  background-color: cornflowerblue;
+}

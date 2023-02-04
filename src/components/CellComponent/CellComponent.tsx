@@ -1,6 +1,7 @@
 import React, { FC, memo, useEffect, useState } from "react";
 import { Cell, CellStatus } from "../../model/Cell";
 import classnames from "classnames";
+import styles from "./CellComponent.module.css";
 
 interface CellProps {
   isEnemy: boolean;
@@ -13,10 +14,10 @@ const CellComponent: FC<CellProps> = ({ cell, onClick, isEnemy, status }) => {
   return (
     <div
       onClick={() => onClick(cell)}
-      className={classnames("cell", {
-        dead: status === CellStatus.DEAD,
-        alive: status === CellStatus.ALIVE && !isEnemy,
-        free: status === CellStatus.FREE,
+      className={classnames(styles.cell, {
+        [styles.dead]: status === CellStatus.DEAD,
+        [styles.alive]: status === CellStatus.ALIVE && !isEnemy,
+        [styles.free]: status === CellStatus.FREE,
       })}
     ></div>
   );

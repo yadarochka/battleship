@@ -1,110 +1,12 @@
-.app{
-  width: 100vw;
-  height: 100vh;
+.app {
   display: flex;
+  width: 100vw;
   justify-content: space-around;
 }
 
-.column{
-  display: flex;
-  flex-direction: column;
-  flex: 0 0 auto;
-}
-
-.game-info{
-  display: flex;
-  flex-direction: column;
-  width: 600px;
-  height: 534px;
-}
-
-.field{
-  cursor: pointer;
-  width: calc(51px * 10);
-  height: calc(51px * 10);
-  display: flex;
-  flex-wrap: wrap;
-
-  margin-top: -1px;
-  margin-left: -1px;
-}
-
-.cell{
-  outline: 1px solid black;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color:cornflowerblue;
-  cursor: inherit;
-
-  margin-top: 1px;
-  margin-left: 1px;
-}
-
-.dead{
-  cursor: auto;
-  background-color: rgb(75, 75, 75);
-}
-.dead:before, .dead:after {
-  content: ""; position: absolute; width: 24px; height: 4px; background: rgb(209, 89, 109);
-}
-.dead:before {
-  transform: rotate(45deg);
-}
-.dead:after {
-  transform: rotate(-45deg);}
-
-  
-.alive{
-  background-color: rgb(75, 75, 75);
-}
-
-.free{
-  cursor: auto;
-  display: flex;
-}
-.free::before{
-  content: '';
-  margin: auto;
-  width: 10px;
-  height: 10px;
-  border: 1px solid black;
-  border-radius: 10px;
-  background-color: black;
-}
-
-.disabled-field {
-  cursor: auto;
-  opacity: 0.4;
-}
-
-.row{
-  display: flex;
-  justify-content: space-between;
-}
-
-.moves{
-  text-align: center;
-  font-weight: 700;
-}
-
-.buttons{
-  margin-top: auto;
-  align-self: center;
-}
-
-.button{
-  min-width: 100px;
-  max-width: 250px;
-  padding: 5px 10px;
-  border-radius: 10px;
-  border: none;
-  background-color: rgb(212, 223, 245);
-  transition: background-color linear 0.25s;
-}
-
-.button:hover{
-  background-color: cornflowerblue;
+@media (max-width: 1250px) {
+  .app {
+    flex-direction: column;
+    align-items: center;
+  }
 }

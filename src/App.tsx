@@ -2,6 +2,8 @@ import classNames from "classnames";
 import { useEffect, useState } from "react";
 import "./App.css";
 import FieldComponent from "./components/FieldComponent/FieldComponent";
+import GameInfo from "./components/GameInfo/GameInfo";
+import PlayerField from "./components/PlayerField";
 import ShipsInfo from "./components/ShipsInfo/ShipsInfo";
 import { Computer } from "./model/Computer";
 import { Field } from "./model/Field";
@@ -93,47 +95,28 @@ function App() {
 
   return (
     <div className="app">
-      <div className="column">
-        <div>Поле игрока {player.name}</div>
-        <FieldComponent
-          className={classNames("field", {
-            "disabled-field": currentPlayer !== enemy,
-          })}
-          setWinner={setWinner}
-          swapPlayer={swapPlayer}
-          currentPlayer={currentPlayer}
-          field={player.field}
-          setField={setPlayerField}
-        />
-      </div>
-      <div className="game-info">
-        <div className="moves">Ход игрока {currentPlayer?.name}</div>
-        <div className="row">
-          <ShipsInfo ships={player.field.ships} />
-          <ShipsInfo ships={enemy.field.ships} />
-        </div>
-        <div className="buttons">
-          <button className="button" onClick={startGame}>
-            Рестарт
-          </button>
-          <button className="button" onClick={changeNames}>
-            Сменить имена
-          </button>
-        </div>
-      </div>
-      <div className="column">
-        <div>Поле игрока {enemy.name}</div>
-        <FieldComponent
-          className={classNames("field", {
-            "disabled-field": currentPlayer !== player,
-          })}
-          setWinner={setWinner}
-          currentPlayer={currentPlayer}
-          swapPlayer={swapPlayer}
-          field={enemy.field}
-          setField={setEnemyField}
-        />
-      </div>
+      <PlayerField
+        swapPlayer={swapPlayer}
+        currentPlayer={currentPlayer}
+        setWinner={setWinner}
+        player={player}
+        setPlayerField={setPlayerField}
+      />
+      <GameInfo
+        currentPlayer={currentPlayer}
+        player={player}
+        enemy={enemy}
+        startGame={startGame}
+        changeNames={changeNames}
+      />
+      <PlayerField
+        isEnemy
+        swapPlayer={swapPlayer}
+        currentPlayer={currentPlayer}
+        setWinner={setWinner}
+        player={enemy}
+        setPlayerField={setEnemyField}
+      />
     </div>
   );
 }

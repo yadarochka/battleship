@@ -11,7 +11,6 @@ export enum CellStatus {
 export class Cell {
   readonly x: number;
   readonly y: number;
-  // кольцевая зависимость нужна, чтобы не стрелять по своим ячейкам
   player;
   ship: Ship | null = null;
   status: CellStatus = CellStatus.EMPTY;
@@ -22,11 +21,11 @@ export class Cell {
     this.player = player;
   }
 
-  setStatus(status: CellStatus) {
+  public setStatus(status: CellStatus) {
     this.status = status;
   }
 
-  setShip(ship: Ship) {
+  public setShip(ship: Ship) {
     this.ship = ship;
   }
 }

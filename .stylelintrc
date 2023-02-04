@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "stylelint-order",
+    "stylelint-config-idiomatic-order",
+    "stylelint-config-standard"
+  ],
+  "plugins": ["stylelint-order"],
+  "rules": {
+    "selector-class-pattern": ".*",
+    "no-descending-specificity": null
+  }
+}
