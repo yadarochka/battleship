@@ -12,10 +12,14 @@
 }
 
 .game-info{
-  width: 200px;
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  height: 534px;
 }
 
 .field{
+  cursor: pointer;
   width: calc(51px * 10);
   height: calc(51px * 10);
   display: flex;
@@ -33,13 +37,14 @@
   justify-content: center;
   align-items: center;
   background-color:cornflowerblue;
-  cursor: pointer;
+  cursor: inherit;
 
   margin-top: 1px;
   margin-left: 1px;
 }
 
 .dead{
+  cursor: auto;
   background-color: rgb(75, 75, 75);
 }
 .dead:before, .dead:after {
@@ -57,6 +62,7 @@
 }
 
 .free{
+  cursor: auto;
   display: flex;
 }
 .free::before{
@@ -70,5 +76,35 @@
 }
 
 .disabled-field {
+  cursor: auto;
   opacity: 0.4;
+}
+
+.row{
+  display: flex;
+  justify-content: space-between;
+}
+
+.moves{
+  text-align: center;
+  font-weight: 700;
+}
+
+.buttons{
+  margin-top: auto;
+  align-self: center;
+}
+
+.button{
+  min-width: 100px;
+  max-width: 250px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  border: none;
+  background-color: rgb(212, 223, 245);
+  transition: background-color linear 0.25s;
+}
+
+.button:hover{
+  background-color: cornflowerblue;
 }

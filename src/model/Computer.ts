@@ -1,5 +1,4 @@
 import { getRandomInt } from "../utils/getRandomInt";
-import { Cell, CellStatus } from "./Cell";
 import { Player } from "./Player";
 
 export class Computer extends Player {
@@ -8,19 +7,10 @@ export class Computer extends Player {
     const kx = getRandomInt(0, 9);
     return this.attack(player.field.cells[ky][kx]);
   }
-
-  attack(cell: Cell) {
-    if (cell.status === CellStatus.ALIVE) {
-      cell.status = CellStatus.DEAD;
-      return true;
-    }
-    if (cell.status === CellStatus.FREE) {
-      return true;
-    }
-    if (cell.status === CellStatus.EMPTY) {
-      cell.status = CellStatus.FREE;
-      return false;
-    }
-    return false;
+  public getCopy() {
+    const newComputer = new Computer();
+    newComputer.name = this.name;
+    newComputer.field = this.field;
+    return newComputer;
   }
 }

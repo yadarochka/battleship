@@ -2,11 +2,13 @@ import { getRandomInt } from "../utils/getRandomInt";
 import { isOutsideOfArray } from "../utils/isOutsideOfArray";
 import { Cell, CellStatus } from "./Cell";
 import { Player } from "./Player";
+import { Ship } from "./Ship";
 
 export class Field {
   player;
   cells: Cell[][] = [];
-  ships = [
+  ships: Ship[] = [];
+  shipsSettings = [
     { shipCount: 1, size: 4 },
     { shipCount: 2, size: 3 },
     { shipCount: 3, size: 2 },
@@ -28,30 +30,34 @@ export class Field {
   }
 
   public setupShips() {
-    const ships = JSON.parse(JSON.stringify(this.ships));
+    const ships = JSON.parse(JSON.stringify(this.shipsSettings));
 
     for (let ship of ships) {
       let { shipCount, size } = ship;
       if (shipCount <= 0) {
         continue;
       }
-      let shipsPlaced = false;
       while (shipCount > 0) {
         let kx = getRandomInt(0, 9);
         let ky = getRandomInt(0, 9);
         if (this.isHorizontalPlaceFree(ky, kx, size)) {
+          let newShip = new Ship(size);
+          this.ships.push(newShip);
           for (let i = 0; i < size; i++) {
             this.cells[ky][kx + i].setStatus(CellStatus.ALIVE);
+            this.cells[ky][kx + i].setShip(newShip);
+            newShip.addCoords(this.cells[ky][kx + i]);
           }
           shipCount -= 1;
         } else if (this.isVerticalPlaceFree(ky, kx, size)) {
+          let newShip = new Ship(size);
+          this.ships.push(newShip);
           for (let i = 0; i < size; i++) {
             this.cells[ky + i][kx].setStatus(CellStatus.ALIVE);
+            this.cells[ky + i][kx].setShip(newShip);
+            newShip.addCoords(this.cells[ky + i][kx]);
           }
           shipCount -= 1;
-        }
-        if (shipCount <= 0) {
-          shipsPlaced = true;
         }
       }
     }
@@ -120,5 +126,31 @@ export class Field {
     const newBoard = new Field(this.player);
     newBoard.cells = this.cells;
     return newBoard;
+  }
+
+  // когда корабль погибает, открываем ячейки вокруг
+  private openTheCell(cell: Cell) {
+    for (let i = -1; i <= 1; i++) {
+      for (let j = -1; j <= 1; j++) {
+        // если выходим за границы поля
+        if (
+          cell.x + j < 0 ||
+          cell.x + j > 9 ||
+          cell.y + i > 9 ||
+          cell.y + i < 0
+        ) {
+          continue;
+        }
+        if (this.cells[cell.y + i][cell.x + j].status === CellStatus.EMPTY) {
+          this.cells[cell.y + i][cell.x + j].status = CellStatus.FREE;
+        }
+      }
+    }
+  }
+
+  public shipDead(ship: Ship) {
+    for (let cell of ship.coords) {
+      this.openTheCell(cell);
+    }
   }
 }

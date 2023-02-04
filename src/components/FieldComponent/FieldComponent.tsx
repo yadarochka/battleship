@@ -10,6 +10,7 @@ interface FieldProps {
   swapPlayer: () => void;
   currentPlayer: Player;
   isEnemy?: boolean;
+  setWinner: (player: Player) => void;
 }
 
 const FieldComponent: FC<FieldProps & React.HTMLAttributes<HTMLDivElement>> = ({
@@ -18,6 +19,7 @@ const FieldComponent: FC<FieldProps & React.HTMLAttributes<HTMLDivElement>> = ({
   isEnemy = false,
   swapPlayer,
   currentPlayer,
+  setWinner,
   ...props
 }) => {
   const updateField = () => {
@@ -29,10 +31,17 @@ const FieldComponent: FC<FieldProps & React.HTMLAttributes<HTMLDivElement>> = ({
     if (cell.player === currentPlayer) {
       return;
     }
-    const result = field.player.attack(cell);
+    const result = currentPlayer.field.player.attack(cell);
+
     updateField();
-    // если игрок попал ход не переходит
+    if (
+      cell.player.field.ships.filter((ship) => ship.status === "alive")
+        .length === 0
+    ) {
+      setWinner(currentPlayer);
+    }
     if (!result) {
+      // если игрок попал ход не переходит
       swapPlayer();
     }
   };

@@ -1,4 +1,5 @@
 import { Player } from "./Player";
+import { Ship } from "./Ship";
 
 export enum CellStatus {
   "EMPTY" = "empty",
@@ -12,6 +13,7 @@ export class Cell {
   readonly y: number;
   // кольцевая зависимость нужна, чтобы не стрелять по своим ячейкам
   player;
+  ship: Ship | null = null;
   status: CellStatus = CellStatus.EMPTY;
 
   constructor(x: number, y: number, player: Player) {
@@ -22,5 +24,9 @@ export class Cell {
 
   setStatus(status: CellStatus) {
     this.status = status;
+  }
+
+  setShip(ship: Ship) {
+    this.ship = ship;
   }
 }
