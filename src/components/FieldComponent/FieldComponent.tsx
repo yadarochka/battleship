@@ -3,7 +3,7 @@ import React, { FC } from "react";
 import { Cell } from "../../model/Cell";
 import { Field } from "../../model/Field";
 import { Player } from "../../model/Player";
-import CellComponent from "../CellComponent/CellComponent";
+import CellComponent from "../CellComponent";
 import styles from "./FieldComponents.module.css";
 
 interface FieldProps {

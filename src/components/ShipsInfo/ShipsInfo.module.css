@@ -1,21 +1,21 @@
 .info {
-    display: flex;
-    flex-direction: column;
-    gap: 10px
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.ship{
-    display: flex;
-    flex-direction: row;
+.ship {
+  display: flex;
+  flex-direction: row;
 }
 
-.shipCell{
-    width: 10px;
-    height: 10px;
-    background-color: rgb(0, 0, 0);
-    border: 1px solid rgb(155, 155, 155);
+.shipCell {
+  width: 10px;
+  height: 10px;
+  border: 1px solid rgb(155 155 155);
+  background-color: rgb(0 0 0);
 }
 
-.row{
-    flex-direction: row;
+.row {
+  flex-direction: row;
 }

@@ -1,6 +1,4 @@
-import classNames from "classnames";
 import React, { FC } from "react";
-import { Player } from "../../model/Player";
 import { Ship } from "../../model/Ship";
 import styles from "./ShipsInfo.module.css";
 

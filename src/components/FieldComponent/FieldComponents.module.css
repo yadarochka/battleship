@@ -12,3 +12,10 @@
   cursor: auto;
   opacity: 0.4;
 }
+
+@media (max-width: 750px) {
+  .field {
+    width: calc(31px * 10);
+    height: calc(31px * 10);
+  }
+}

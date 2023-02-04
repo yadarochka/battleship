@@ -1,4 +1,4 @@
-import React, { FC, memo, useEffect, useState } from "react";
+import React, { FC } from "react";
 import { Cell, CellStatus } from "../../model/Cell";
 import classnames from "classnames";
 import styles from "./CellComponent.module.css";

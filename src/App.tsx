@@ -1,10 +1,7 @@
-import classNames from "classnames";
 import { useEffect, useState } from "react";
 import "./App.css";
-import FieldComponent from "./components/FieldComponent/FieldComponent";
 import GameInfo from "./components/GameInfo/GameInfo";
 import PlayerField from "./components/PlayerField";
-import ShipsInfo from "./components/ShipsInfo/ShipsInfo";
 import { Computer } from "./model/Computer";
 import { Field } from "./model/Field";
 import { Player } from "./model/Player";
@@ -92,7 +89,6 @@ function App() {
       }
     });
   };
-
   return (
     <div className="app">
       <PlayerField

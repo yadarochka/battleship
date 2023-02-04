@@ -1,6 +1,12 @@
-.playerField {
+.column {
   display: flex;
   flex-direction: column;
+}
+
+.row {
+  display: flex;
+  width: 100vw;
+  justify-content: space-around;
 }
 
 .disabled {

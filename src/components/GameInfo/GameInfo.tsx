@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { Computer } from "../../model/Computer";
 import { Player } from "../../model/Player";
+import { useIsTablet } from "../../utils/useIsTablet";
 import ShipsInfo from "../ShipsInfo";
 import styles from "./GameInfo.module.css";
 
@@ -19,6 +20,19 @@ const GameInfo: FC<GameInfoProps> = ({
   startGame,
   changeNames,
 }) => {
+  const isTablet = useIsTablet();
+
+  if (isTablet) {
+    return (
+      <div className={styles.info}>
+        <div className={styles.moves}>Ход игрока {currentPlayer?.name}</div>
+        <div className={styles.buttons}>
+          <button onClick={startGame}>Рестарт</button>
+          <button onClick={changeNames}>Сменить имена</button>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className={styles.info}>
       <div className={styles.moves}>Ход игрока {currentPlayer?.name}</div>

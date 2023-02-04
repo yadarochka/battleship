@@ -2,8 +2,9 @@
   display: flex;
   min-width: 400px;
   max-width: 600px;
-  height: 434px;
+  max-height: 434px;
   flex-direction: column;
+  gap: 10px;
 }
 
 .row {
