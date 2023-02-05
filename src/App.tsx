@@ -19,7 +19,7 @@ function App() {
   useEffect(() => {
     startGame();
   }, []);
-  // ходы компьютера
+
   useEffect(() => {
     if (currentPlayer === enemy) {
       computerAttack();
@@ -79,7 +79,7 @@ function App() {
   };
 
   const computerAttack = () => {
-    sleep(1).then(() => {
+    sleep(0.5).then(() => {
       const result = enemy.preparingForAttack(player);
       if (!result) {
         swapPlayer();
