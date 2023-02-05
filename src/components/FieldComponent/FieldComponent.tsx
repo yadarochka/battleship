@@ -41,7 +41,7 @@ const FieldComponent: FC<FieldProps & React.HTMLAttributes<HTMLDivElement>> = ({
     if (!player.isAlive()) {
       setWinner(currentPlayer);
     }
-    if (!result) {
+    if (!result && player.isAlive()) {
       // если игрок попал ход не переходит
       swapPlayer();
     }
