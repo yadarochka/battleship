@@ -11,14 +11,12 @@ export enum CellStatus {
 export class Cell {
   readonly x: number;
   readonly y: number;
-  player;
   ship: Ship | null = null;
   status: CellStatus = CellStatus.EMPTY;
 
-  constructor(x: number, y: number, player: Player) {
+  constructor(x: number, y: number) {
     this.x = x;
     this.y = y;
-    this.player = player;
   }
 
   public setStatus(status: CellStatus) {

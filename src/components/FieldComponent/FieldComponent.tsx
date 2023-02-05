@@ -8,18 +8,22 @@ import styles from "./FieldComponents.module.css";
 
 interface FieldProps {
   field: Field;
+  currentPlayer: Player;
+  player: Player;
+  isEnemy?: boolean;
   setField: (field: Field) => void;
   swapPlayer: () => void;
-  currentPlayer: Player;
-  isEnemy?: boolean;
   setWinner: (player: Player) => void;
 }
+
+const letters = ["А", "Б", "В", "Г", "Д", "Е", "Ж", "З", "И", "К"];
 
 const FieldComponent: FC<FieldProps & React.HTMLAttributes<HTMLDivElement>> = ({
   field,
   setField,
   isEnemy = false,
   swapPlayer,
+  player,
   currentPlayer,
   setWinner,
   ...props
@@ -30,16 +34,11 @@ const FieldComponent: FC<FieldProps & React.HTMLAttributes<HTMLDivElement>> = ({
   };
 
   const handlerAttackButton = (cell: Cell) => {
-    if (cell.player === currentPlayer) {
-      return;
-    }
-    const result = currentPlayer.field.player.attack(cell);
+    const result = currentPlayer.attack(cell);
 
     updateField();
-    if (
-      cell.player.field.ships.filter((ship) => ship.status === "alive")
-        .length === 0
-    ) {
+
+    if (!player.isAlive()) {
       setWinner(currentPlayer);
     }
     if (!result) {
@@ -47,8 +46,6 @@ const FieldComponent: FC<FieldProps & React.HTMLAttributes<HTMLDivElement>> = ({
       swapPlayer();
     }
   };
-
-  const letters = ["А", "Б", "В", "Г", "Д", "Е", "Ж", "З", "И", "К"];
 
   return (
     <div className={classNames(styles.field, props.className)}>

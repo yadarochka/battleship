@@ -6,9 +6,6 @@ export class Player {
   field: Field = new Field(this);
 
   public attack(target: Cell) {
-    if (target.player === this) {
-      return true;
-    }
     if (
       target.status === CellStatus.DEAD ||
       target.status === CellStatus.FREE
@@ -18,15 +15,16 @@ export class Player {
     if (target.status === CellStatus.ALIVE) {
       target.setStatus(CellStatus.DEAD);
       target.ship?.getInjury();
-      if (target.ship?.status === "dead") {
-        target.player.field.shipDead(target.ship);
-      }
       return true;
     }
     if (target.status === CellStatus.EMPTY) {
       target.setStatus(CellStatus.FREE);
       return false;
     }
+  }
+
+  public isAlive() {
+    return !!this.field.ships.filter((ship) => ship.status === "alive").length;
   }
 
   public getCopy() {

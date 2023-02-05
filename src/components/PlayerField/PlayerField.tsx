@@ -37,6 +37,7 @@ const PlayerField: FC<PlayerField> = ({
             [styles.disabled]: currentPlayer === player,
             [styles.cursor]: !isEnemy,
           })}
+          player={player}
           setWinner={setWinner}
           swapPlayer={swapPlayer}
           currentPlayer={currentPlayer}
@@ -57,6 +58,7 @@ const PlayerField: FC<PlayerField> = ({
               [styles.disabled]: currentPlayer === player,
               [styles.cursor]: !isEnemy,
             })}
+            player={player}
             setWinner={setWinner}
             swapPlayer={swapPlayer}
             currentPlayer={currentPlayer}
@@ -78,6 +80,7 @@ const PlayerField: FC<PlayerField> = ({
           [styles.disabled]: currentPlayer === player,
           [styles.cursor]: !isEnemy,
         })}
+        player={player}
         setWinner={setWinner}
         swapPlayer={swapPlayer}
         currentPlayer={currentPlayer}

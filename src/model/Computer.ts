@@ -2,7 +2,7 @@ import { getRandomInt } from "../utils/getRandomInt";
 import { Player } from "./Player";
 
 export class Computer extends Player {
-  preparingForAttack(player: Player) {
+  public preparingForAttack(player: Player) {
     const ky = getRandomInt(0, 9);
     const kx = getRandomInt(0, 9);
     return this.attack(player.field.cells[ky][kx]);
