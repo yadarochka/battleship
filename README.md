@@ -25,5 +25,4 @@
 git clone https://github.com/yadarochka/battleship.git
 npm i
 npm run dev
-pnpm dev
 ```
