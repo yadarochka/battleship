@@ -23,7 +23,7 @@ export class Field {
     for (let x = 0; x < 10; x++) {
       const row = [];
       for (let y = 0; y < 10; y++) {
-        row.push(new Cell(y, x, this.player));
+        row.push(new Cell(y, x));
       }
       this.cells.push(row);
     }
@@ -41,7 +41,7 @@ export class Field {
         let kx = getRandomInt(0, 9);
         let ky = getRandomInt(0, 9);
         if (this.isHorizontalPlaceFree(ky, kx, size)) {
-          let newShip = new Ship(size);
+          let newShip = new Ship(size, this);
           this.ships.push(newShip);
           for (let i = 0; i < size; i++) {
             this.cells[ky][kx + i].setStatus(CellStatus.ALIVE);
@@ -50,7 +50,7 @@ export class Field {
           }
           shipCount -= 1;
         } else if (this.isVerticalPlaceFree(ky, kx, size)) {
-          let newShip = new Ship(size);
+          let newShip = new Ship(size, this);
           this.ships.push(newShip);
           for (let i = 0; i < size; i++) {
             this.cells[ky + i][kx].setStatus(CellStatus.ALIVE);
@@ -61,6 +61,12 @@ export class Field {
         }
       }
     }
+  }
+
+  public getCopy(): Field {
+    const newBoard = new Field(this.player);
+    newBoard.cells = this.cells;
+    return newBoard;
   }
 
   private isCellFree(y: number, x: number) {
@@ -120,37 +126,5 @@ export class Field {
     }
 
     return true;
-  }
-
-  public getCopy(): Field {
-    const newBoard = new Field(this.player);
-    newBoard.cells = this.cells;
-    return newBoard;
-  }
-
-  // когда корабль погибает, открываем ячейки вокруг
-  private openTheCell(cell: Cell) {
-    for (let i = -1; i <= 1; i++) {
-      for (let j = -1; j <= 1; j++) {
-        // если выходим за границы поля
-        if (
-          cell.x + j < 0 ||
-          cell.x + j > 9 ||
-          cell.y + i > 9 ||
-          cell.y + i < 0
-        ) {
-          continue;
-        }
-        if (this.cells[cell.y + i][cell.x + j].status === CellStatus.EMPTY) {
-          this.cells[cell.y + i][cell.x + j].status = CellStatus.FREE;
-        }
-      }
-    }
-  }
-
-  public shipDead(ship: Ship) {
-    for (let cell of ship.coords) {
-      this.openTheCell(cell);
-    }
   }
 }
